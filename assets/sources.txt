@@ -1,0 +1,3 @@
+images: https://opengameart.org/content/pixel-chess-pieces
+sound effects: https://www.chess.com/forum/view/general/chessboard-sound-files
+
