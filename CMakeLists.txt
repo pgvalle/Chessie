@@ -26,9 +26,11 @@ link_directories(
   ${SDL2_NET_LIBRARY_DIRS}
 )
 
-# Client target
+file(GLOB COMMON_SOURCE_FILES source/**.cpp)
 
-add_executable(client vendor/SDL_FontCache.c source/client.cpp source/common.cpp)
+# Client target
+file(GLOB_RECURSE CLIENT_SOURCE_FILES source/client/**.cpp vendor/SDL_FontCache.c)
+add_executable(client  ${COMMON_SOURCE_FILES} ${CLIENT_SOURCE_FILES})
 target_link_libraries(
   client
   ${SDL2_LIBRARIES}
@@ -39,6 +41,6 @@ target_link_libraries(
 )
 
 # Server target
-
-add_executable(server source/server.cpp source/common.cpp)
+file(GLOB_RECURSE SERVER_SOURCE_FILES source/server/**.cpp)
+add_executable(server ${COMMON_SOURCE_FILES} ${SERVER_SOURCE_FILES})
 target_link_libraries(server ${SDL2_LIBRARIES} ${SDL2_NET_LIBRARIES})
